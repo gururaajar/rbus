@@ -1420,7 +1420,8 @@ rbusError_t  rbusEvent_SubscribeRawData(
     char const*         eventName,
     rbusEventHandler_t  handler,
     void*               userData,
-    int                 timeout);
+    int                 timeout,
+    int                 test);
 
 /** @fn rbusError_t  rbusEvent_SubscribeAsync(
  *          rbusHandle_t                    handle,
@@ -1559,7 +1560,8 @@ rbusError_t rbusEvent_SubscribeExRawData(
     rbusHandle_t              handle,
     rbusEventSubscription_t*  subscription,
     int                       numSubscriptions,
-    int                       timeout);
+    int                       timeout,
+    int                       test);
 
 /** @fn rbusError_t  rbusEvent_SubscribeExAsync (
  *          rbusHandle_t handle,
@@ -1686,7 +1688,8 @@ rbusError_t  rbusEvent_Publish(
  */
 rbusError_t  rbusEvent_PublishRawData(
   rbusHandle_t          handle,
-  rbusEventRawData_t*    eventData);
+  rbusEventRawData_t*    eventData,
+  int                   test);
 
 /** @} */
 

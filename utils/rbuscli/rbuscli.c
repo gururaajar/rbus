@@ -2079,7 +2079,7 @@ exit_error:
     }
     else if(add && rawDataSub)
     {
-        rc = rbusEvent_SubscribeExRawData(g_busHandle, &subscription_rawdata, 1, 0);
+        rc = rbusEvent_SubscribeExRawData(g_busHandle, &subscription_rawdata, 1, 0, 0);
     }
     else if(add)
     {
@@ -2157,7 +2157,7 @@ void validate_and_execute_publish_command(int argc, char *argv[], bool rawDataPu
         event.rawData = argv[3];
         event.rawDataLen = strlen(argv[3]);
 
-        rc = rbusEvent_PublishRawData(g_busHandle, &event);
+        rc = rbusEvent_PublishRawData(g_busHandle, &event, 0);
         if(rc != RBUS_ERROR_SUCCESS)
             printf("provider: rbusEvent_Publish Event1 failed: %d\n", rc);
     }

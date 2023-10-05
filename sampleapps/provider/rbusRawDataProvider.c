@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
             event.rawData = "Hello";
             event.rawDataLen = strlen("Hello")+1;
 
-            rc = rbusEvent_PublishRawData(handle, &event);
+            rc = rbusEvent_PublishRawData(handle, &event, 0);
             if(rc != RBUS_ERROR_SUCCESS)
                 printf("provider: rbusEvent_PublishRawData Event failed: %d\n", rc);
         }

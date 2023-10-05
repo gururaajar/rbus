@@ -4738,12 +4738,14 @@ rbusError_t  rbusEvent_SubscribeRawData(
     char const*         eventName,
     rbusEventHandler_t  handler,
     void*               userData,
-    int                 timeout)
+    int                 timeout,
+    int                 test)
 {
     rbusError_t errorcode = RBUS_ERROR_SUCCESS;
     char rawDataTopic[RBUS_MAX_NAME_LENGTH] = {0};
     rbusEventSubscriptionInternal_t* subInternal = NULL;
     struct _rbusHandle* handleInfo = (struct _rbusHandle*)handle;
+    (void)test;
 
     VERIFY_NULL(handle);
     VERIFY_NULL(eventName);
@@ -4982,13 +4984,15 @@ rbusError_t rbusEvent_SubscribeExRawData(
     rbusHandle_t                handle,
     rbusEventSubscription_t*    subscription,
     int                         numSubscriptions,
-    int                         timeout)
+    int                         timeout,
+    int                         test)
 {
     rbusError_t errorcode = RBUS_ERROR_SUCCESS;
     struct _rbusHandle* handleInfo = (struct _rbusHandle*)handle;
     char rawDataTopic[RBUS_MAX_NAME_LENGTH] = {0};
     rbusEventSubscriptionInternal_t* subInternal;
     int i;
+    (void)test;
 
     VERIFY_NULL(handle);
     VERIFY_NULL(subscription);
@@ -5259,12 +5263,14 @@ bool rbusEvent_IsSubscriptionExist(
 
 rbusError_t  rbusEvent_PublishRawData(
   rbusHandle_t          handle,
-  rbusEventRawData_t*    eventData)
+  rbusEventRawData_t*    eventData,
+  int                   test)
 {
     struct _rbusHandle* handleInfo = (struct _rbusHandle*)handle;
     rbusError_t rc = RBUS_ERROR_SUCCESS;
     rbusMessage_t msg;
     char rawDataTopic[RBUS_MAX_NAME_LENGTH] = {0};
+    (void)test;
 
     VERIFY_NULL(handle);
     VERIFY_NULL(eventData);

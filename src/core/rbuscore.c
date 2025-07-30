@@ -1948,9 +1948,6 @@ rbusCoreError_t rbus_discoverWildcardDestinations(const char * expression, int *
             }
 
             rtMessage_Release(msg);
-
-            ret = RBUSCORE_SUCCESS;
-
         }
         else
         {
@@ -2036,10 +2033,7 @@ rbusCoreError_t rbus_discoverObjectElements(const char * object, int * count, ch
                 ret = RBUSCORE_ERROR_INSUFFICIENT_MEMORY;
             }
         }
-
         rtMessage_Release(msg);
-
-        ret = RBUSCORE_SUCCESS;
     }
     else
     {
@@ -2295,9 +2289,7 @@ rbusCoreError_t rbus_discoverRegisteredComponents(int * count, char *** componen
             RBUSCORELOG_ERROR("Memory allocation failure");
             ret = RBUSCORE_ERROR_INSUFFICIENT_MEMORY;
         }
-
         rtMessage_Release(msg);
-        ret = RBUSCORE_SUCCESS;
     }
     else
     {
@@ -3068,7 +3060,6 @@ rbusCoreError_t rbuscore_closePrivateConnection(const char *pParameterName)
                 memcpy(providerName, obj->m_providerName, MAX_OBJECT_NAME_LENGTH);
                 providerName[MAX_OBJECT_NAME_LENGTH] = '\0';
                 rtVector_RemoveItem(gListOfClientDirectDMLs, obj, rtVector_Cleanup_Free);
-                obj = NULL;
             }
             rbusMessage_Release(response);
         }

@@ -1492,11 +1492,17 @@ rtConnectedClient_Reset(rtConnectedClient *clnt)
 static char*
 rtRouted_GetClientName(rtConnectedClient* clnt)
 {
-  size_t i;
-  i = rtVector_Size(gRoutes);
+  size_t i = 0;
   char *clnt_name = NULL;
-  while(i--)
+
+  if (!clnt)
+    return NULL;
+
+  i = rtVector_Size(gRoutes);
+
+  while(i > 0)
   {
+    i--;
     rtRouteEntry* route = (rtRouteEntry *) rtVector_At(gRoutes, i);
     if(route && (route->subscription) && (route->subscription->client)) {
       if(strcmp( route->subscription->client->ident, clnt->ident ) == 0) {
